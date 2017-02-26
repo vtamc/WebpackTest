@@ -8,7 +8,7 @@ module.exports = {
     },
     module: {
          loaders: [{
-             test: '/\.js$/',
+             test: /\.js$/,
              exclude: '/node_modules/',
              loader: 'babel-loader',
              query: {
@@ -17,7 +17,7 @@ module.exports = {
          }],
          rules: [
           {
-            test: '/\.css$/',
+            test: /\.css$/,
             use: [ 'style-loader', 'css-loader' ]
           }
         ]

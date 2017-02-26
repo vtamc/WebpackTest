@@ -2,6 +2,7 @@
 	import $ from 'jquery';
 	import ol from 'openlayers';
 	import css from './style.css';
+	import olStyle from '../node_modules/openlayers/css/ol.css';
 
 	$(() => {
 		
