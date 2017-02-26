@@ -1,11 +1,18 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    entry: ["babel-polyfill", "./src/main.js"],
-    output: {
-        filename: "build/bundle.js"
+
+    entry: {
+        map: ["./src/map/main.js"],
+        page: ["./src/page/page.js"]
     },
+
+    output: {
+        filename: "build/[name]/entry.js"
+    },
+
     module: {
+
         loaders: [
             {
                 test: /\.js$/,
@@ -16,10 +23,12 @@ module.exports = {
                 }
             }
         ],
+
         rules: [
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract({ 
+                loader: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
                     use: 'css-loader' 
                 })
             }
@@ -27,6 +36,6 @@ module.exports = {
     },
 
     plugins: [
-        new ExtractTextPlugin('build/bundle.css')
+        new ExtractTextPlugin('build/[name]/style.css')
     ]
 };
