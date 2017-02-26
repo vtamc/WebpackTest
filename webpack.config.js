@@ -1,3 +1,4 @@
+//var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -26,16 +27,21 @@ module.exports = {
 
         rules: [
             {
-                test: /\.css$/,
+                test: /\.scss|.css$/,
                 loader: ExtractTextPlugin.extract({
                     fallback: "style-loader",
-                    use: 'css-loader' 
+                    use: [
+                        { loader: "css-loader" }, 
+                        { loader: "sass-loader" }
+                    ] 
                 })
             }
         ]
     },
 
     plugins: [
-        new ExtractTextPlugin('build/[name]/style.css')
+        new ExtractTextPlugin({
+            filename: "build/[name]/style.css"
+        })
     ]
 };

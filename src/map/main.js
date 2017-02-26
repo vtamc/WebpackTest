@@ -2,7 +2,7 @@
 import $ from 'jquery';
 import ol from 'openlayers';
 
-require('./style.css');
+require('./style.scss');
 require('openlayers/css/ol.css');
 
 $(() => {
